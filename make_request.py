@@ -87,7 +87,7 @@ def do_inference(hostport, workdir):
     return _decode_results(results)
 
 def main(_):
-    server = '10.240.0.6:9000'
+    server = 'localhost:9000'
     workdir = '/tmp'
     objects = do_inference(server, workdir)
     print(json.dumps(objects, indent=1))
