@@ -31,15 +31,16 @@ In this sample, we will demonstration how to export [this] model to tensorflow-m
     `pip install tensorflow-serving-api`
 
 ## Export model
-Please clone [this] repo and do the following 8 steps.
+Please clone [this] repo and do the following 9 steps.
 1. clone ssd repo `git clone https://github.com/jedichien/ssd_keras.git`
 2. download weights (check repo discription) to this repo root.
 3. make two directory named `/utils` and `/model` respectively
 4. copy `ssd.py` and `ssd_layers.py` to `/model`
 5. copy `ssd_utils.py` to `/utils`
 6. `python export_model.py`
-7. if success will see directory in `/tmp/ssd/1`.
-8. `tensorflow_model_server --port=9000 --model_name=ssd --model_base_path=/tmp/ssd/`
+7. if success will see directory `/tmp/ssd/1`.
+8. `python export_model.py`
+9. `tensorflow_model_server --port=9000 --model_name=ssd --model_base_path=/tmp/ssd/`
 
 ## Make a request
 `python make_request.py`
