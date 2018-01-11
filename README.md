@@ -1,5 +1,5 @@
 # Keras-based model export to tensorflow-model-server
-Tensorflow model server communicate with clients by using grpc which is transport protocol similiar to rpc. <br/>
+Tensorflow model server communicate with clients by using grpc which is transport protocol similar to rpc. <br/>
 You may wonder why should we install two kind of package instead of only one. Because In client side we have to package our message as `.proto` format which is grpc criteria and there is several packages file including then you won't to package them foreach I guess.<br/><br/>
 In this sample, we will demonstrate how to export [this] model to tensorflow-model-server, then simple send a request  from client.
 
