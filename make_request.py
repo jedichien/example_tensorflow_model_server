@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 import sys
-import threading
 
 from grpc.beta import implementations
 import numpy as np
@@ -56,7 +55,7 @@ def _decode_results(results):
         data.append(_data)
     return data
 
-def do_inference(hostport, workdir, concurrency):
+def do_inference(hostport, workdir):
     host, port = hostport.split(':')
     channel = implementations.insecure_channel(host, int(port))
     stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
@@ -84,13 +83,13 @@ def do_inference(hostport, workdir, concurrency):
     results = np.array(results)
     results = np.reshape(results, (1, -1, 33))
     results = bbox_util.detection_out(results)
+    
     return _decode_results(results)
 
 def main(_):
     server = '10.240.0.6:9000'
     workdir = '/tmp'
-    concurrency = 1
-    objects = do_inference(server, workdir, concurrency)
+    objects = do_inference(server, workdir)
     print(json.dumps(objects, indent=1))
 
 if __name__ == '__main__':
